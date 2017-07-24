@@ -1,7 +1,9 @@
 # vimwiki-task
-an addon for vimwiki to manage task and todo lists.
+An addon for vimwiki to manage task and todo lists.
 
-I started this project to get into vim plugin and python programming ... . Still there is hope that it may be useful for you to manage some of your (small) project or simply your to do to list,
+It should work on neovim and vim.
+
+I started this project to get into vim plugins, vimscripting, and python programming ... . Still there is hope that it may be useful to manage some of your (small) projects or simply to manage your to do-to list.
 
 ## Documentation
 for vimwiki-task folding style:
@@ -52,7 +54,7 @@ noremap <c-s-j> :lne<cr>
 noremap <c-k> :lpr<cr>
 ```
 
-## To Do's
+## To-Do's
 
 * [ ] clean up
 * [ ] make all functions work

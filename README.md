@@ -6,7 +6,6 @@ for vimwiki-task folding style:
   let g:vimwiki_folding = 'custom'
 
 ## Functions:
-
 ``` vimscript
   ShowPast
   ShowNextDays
@@ -35,6 +34,7 @@ for vimwiki-task folding style:
 ``` vimscript
 jump to quickfix or location list/window:
 map <c-l> :lopen<cr>
+map <leader>l :lopen<cr>
 map <leader>lc :lclose<cr>
 map <c-q>q :copen<cr>
 map <leader>qc :cclose<cr>

@@ -1,7 +1,7 @@
 # vimwiki-task
 An addon for vimwiki to manage task and todo lists.
 
-It should work on neovim and vim.
+It should work with neovim and vim.
 
 I started this project to get into vim plugins, vimscripting, and python programming ... . Still there is hope that it may be useful to manage some of your (small) projects or simply to manage your to do-to list.
 

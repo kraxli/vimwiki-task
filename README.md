@@ -52,7 +52,7 @@ noremap <c-s-j> :lne<cr>
 noremap <c-k> :lpr<cr>
 ```
 
-### To Do's
+## To Do's
 
 * [ ] clean up
 * [ ] make all functions work

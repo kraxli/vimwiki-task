@@ -5,12 +5,20 @@ It should work on neovim and vim.
 
 I started this project to get into vim plugins, vimscripting, and python programming ... . Still there is hope that it may be useful to manage some of your (small) projects or simply to manage your to do-to list.
 
+## Inatallation
+
+- Prerequisites: ```vimwiki/vimwiki```
+- using vim-plug: ``` plug 'kraxli/vimwiki-task' ```
+
+
 ## Documentation
-for vimwiki-task folding style:
+for ```vimwiki-task folding style```:
+``` vim
   let g:vimwiki_folding = 'custom'
+```  
 
 ### Functions:
-``` vimscript
+``` vim
   ShowPast
   ShowNextDays
     :ShowNextDays 5
@@ -35,13 +43,14 @@ for vimwiki-task folding style:
 ```
 
 ### Key mappings
+``` vim
 <leader>td : task done, adds the date at which the task was done
 <leader>tm : move task to the botom. My last section is "completed tasks"
-
+```
 
 ### mappings to put to your .vimrc/init.vim file to help simplify things
 jump to location (quickfix) list/window and close it:
-``` vimscript
+``` vim
 map <c-l> :lopen<cr>
 map <leader>l :lopen<cr>
 map <leader>lc :lclose<cr>
@@ -49,7 +58,7 @@ map <c-q>q :copen<cr>
 map <leader>qc :cclose<cr>
 ```
 move down/up the items:
-``` vimscript
+``` vim
 noremap <c-s-j> :lne<cr>
 noremap <c-k> :lpr<cr>
 ```

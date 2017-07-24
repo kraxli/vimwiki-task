@@ -6,6 +6,8 @@ for vimwiki-task folding style:
   let g:vimwiki_folding = 'custom'
 
 ## Functions:
+
+``` vimscript
   ShowPast
   ShowNextDays
     :ShowNextDays 5
@@ -27,9 +29,10 @@ for vimwiki-task folding style:
 
   GetNextDays arg: numberOfDays
   GetPast  
+```
 
 ## mappings to simplify things
-
+``` vimscript
 jump to quickfix or location list/window:
 map <c-l> :lopen<cr>
 map <leader>lc :lclose<cr>
@@ -37,6 +40,7 @@ map <c-q>q :copen<cr>
 map <leader>qc :cclose<cr>
 noremap <c-s-j> :lne<cr>
 noremap <c-k> :lpr<cr>
+```
 
 ## To Do's
 

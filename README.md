@@ -31,21 +31,24 @@ for vimwiki-task folding style:
 ```
 
 ## mappings to simplify things
+jump to location (quickfix) list/window and close it:
 ``` vimscript
-jump to quickfix or location list/window:
 map <c-l> :lopen<cr>
 map <leader>l :lopen<cr>
 map <leader>lc :lclose<cr>
 map <c-q>q :copen<cr>
 map <leader>qc :cclose<cr>
+```
+move down/up the items:
+``` vimscript
 noremap <c-s-j> :lne<cr>
 noremap <c-k> :lpr<cr>
 ```
 
 ## To Do's
 
-* clean up
-* make all functions work
-* use python and vim coding standards
+* [ ] clean up
+* [ ] make all functions work
+* [ ] use python and vim coding standards
  
 

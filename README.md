@@ -1,11 +1,13 @@
 # vimwiki-task
-an addon for vimwiki to manage task and todo lists
+an addon for vimwiki to manage task and todo lists.
 
+I started this project to get into vim plugin and python programming ... . Still there is hope that it may be useful for you to manage some of your (small) project or simply your to do to list,
 
+## Documentation
 for vimwiki-task folding style:
   let g:vimwiki_folding = 'custom'
 
-## Functions:
+### Functions:
 ``` vimscript
   ShowPast
   ShowNextDays
@@ -30,7 +32,12 @@ for vimwiki-task folding style:
   GetPast  
 ```
 
-## mappings to simplify things
+### Key mappings
+<leader>td : task done, adds the date at which the task was done
+<leader>tm : move task to the botom. My last section is "completed tasks"
+
+
+### mappings to put to your .vimrc/init.vim file to help simplify things
 jump to location (quickfix) list/window and close it:
 ``` vimscript
 map <c-l> :lopen<cr>
@@ -45,10 +52,11 @@ noremap <c-s-j> :lne<cr>
 noremap <c-k> :lpr<cr>
 ```
 
-## To Do's
+### To Do's
 
 * [ ] clean up
 * [ ] make all functions work
 * [ ] use python and vim coding standards
+* [ ] and much more (please contribute! :-) )
  
 

@@ -44,8 +44,8 @@ for ```vimwiki-task folding style```:
 
 ### Key mappings
 ``` vim
-<leader>td : task done, adds the date at which the task was done
-<leader>tm : move task to the botom. My last section is "completed tasks"
+<leader>td  " task done, adds the date at which the task was done
+<leader>tm  " move task to the botom. My last section is 'completed tasks'
 ```
 
 ### mappings to put to your .vimrc/init.vim file to help simplify things
@@ -68,6 +68,7 @@ noremap <c-k> :lpr<cr>
 * [ ] clean up
 * [ ] make all functions work
 * [ ] use python and vim coding standards
-* [ ] and much more (please contribute! :-) )
+* [ ] much more functionality 
+* [ ] your contribution :-) 
  
 

@@ -286,7 +286,6 @@ endfunction
 
 
 
-
 " if g:vimwiki_folding ==? 'custom'
 "   " DEBUG
 "   echo "entering fodling in after for custom"

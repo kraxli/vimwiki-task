@@ -3,15 +3,29 @@
 #  vimwiki snipptes  #
 ######################
 
-#  snippet to include path to wiki file  #
-snippet wikipath "include path to wiki-file" 
-g:vimwiki_list['path']
-g:vimwiki_p\${1:filename}.wiki
-endsnippet
+# #  snippet to include path to wiki file  #
+# snippet wikipath "include path to wiki-file" 
+# g:vimwiki_list['path'] \${1:filename}.wiki
+# endsnippet
 
 ###################
 #  DATE SNIPPETS  #
 ################### 
+
+
+snippet dt "include due to date" 
+@20${3:`!v strftime("%y")`}-${2:`!v strftime("%m")`}-${1:`!v strftime("%d")`}:
+endsnippet
+# or simply [from-to]
+# [DD: ${3:`!v strftime("%Y")`}-${2:`!v strftime("%m")`}-${1:`!v strftime("%d")`}] 
+
+snippet dr "include action time" 
+@20${3:`!v strftime("%y")`}-${2:`!v strftime("%m")`}-${1:`!v strftime("%d")`} - 20${6:`!v strftime("%y")`}-${5:`!v strftime("%m")`}-${4:`!v strftime("%d")`}:
+endsnippet  
+ 
+
+
+
 
 snippet DueTo "include due to date" 
 [Date to: 20${3:`!v strftime("%y:")`}-${2:`!v strftime("%m")`}-${1:`!v strftime("%d")`}]
@@ -25,16 +39,6 @@ snippet dd "include due to date"
 [DD: 20${3:`!v strftime("%y")`}-${2:`!v strftime("%m")`}-${1:`!v strftime("%d")`}]
 endsnippet
 # [DD: ${3:`!v strftime("%Y")`}-${2:`!v strftime("%m")`}-${1:`!v strftime("%d")`}]
-
-snippet @2 "include due to date" 
-@20${3:`!v strftime("%y")`}-${2:`!v strftime("%m")`}-${1:`!v strftime("%d")`}:
-endsnippet
-# or simply [from-to]
-# [DD: ${3:`!v strftime("%Y")`}-${2:`!v strftime("%m")`}-${1:`!v strftime("%d")`}] 
-
-snippet @22 "include action time" 
-@20${3:`!v strftime("%y")`}-${2:`!v strftime("%m")`}-${1:`!v strftime("%d")`} - 20${6:`!v strftime("%y")`}-${5:`!v strftime("%m")`}-${4:`!v strftime("%d")`}:
-endsnippet  
 
 snippet date
 20${3:`!v strftime("%y")`}-${2:`!v strftime("%m")`}-${1:`!v strftime("%d")`}

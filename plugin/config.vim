@@ -19,7 +19,8 @@ endif
 
 
 let s:ultisnipVimwikiDir = g:vimwiki_task_root."/UltiSnips"
-let g:xxx = s:ultisnipVimwikiDir
+let s:snippsVimwikiDir = g:vimwiki_task_root."/snippets"
+let g:xxx = s:snippsVimwikiDir
 
 
 if !exists("g:UltiSnipsSnippetsDir")
@@ -33,9 +34,9 @@ let g:neosnippet#snippets_directory = get(g:,'neosnippet#snippets_directory',
       \ '')
       
 if empty(g:neosnippet#snippets_directory)
-  let g:neosnippet#snippets_directory = [s:ultisnipVimwikiDir]
+  let g:neosnippet#snippets_directory = [s:snippsVimwikiDir]
   
 else
-  let g:neosnippet#snippets_directory = [s:ultisnipVimwikiDir] +
+  let g:neosnippet#snippets_directory = [s:snippsVimwikiDir] +
         \ g:neosnippet#snippets_directory
 endif

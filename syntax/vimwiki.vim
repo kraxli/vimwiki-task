@@ -156,5 +156,3 @@ hi VimwikiHeader6 guifg=LightRed ctermfg=LightRed
 " hi VimwikiHeader2 guifg=DarkCyan  " #00FF00 DarkCyan  #427b58 GruvboxBlueSign GruvboxBlue
 
 
-" highlight Folded ctermfg=White ctermbg=DarkGrey guifg=White guibg=DarkGrey
-highlight Folded ctermfg=DarkGrey cterm=None guifg=DarkGrey gui=None

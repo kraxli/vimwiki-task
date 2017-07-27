@@ -42,5 +42,6 @@ else
       let g:neosnippet#snippets_directory = g:neosnippet#snippets_directory.','.s:snippsVimwikiDir
     elseif  type(g:neosnippet#snippets_directory) == 3
       let g:neosnippet#snippets_directory = add(g:neosnippet#snippets_directory, s:snippsVimwikiDir)
+    endif
 
 endif

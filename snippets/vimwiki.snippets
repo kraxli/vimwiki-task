@@ -5,8 +5,8 @@
 #	 Copyright `&enc[:2] == "utf" ? "©" : "(c)"` `strftime("%Y")` ${1:`g:snips_author`}. All Rights Reserved.
   
 snippet dt
-	@20${3:`!v strftime("%y")`}-${2:`!v strftime("%m")`}-${1:`!v strftime("%d")`}:${0}
+	@20${3:`strftime("%y")`}-${2:`strftime("%m")`}-${1:`strftime("%d")`}:${0}
 
-snippet dr "include action time" 
+snippet dr
 	@20${3:`!v strftime("%y")`}-${2:`!v strftime("%m")`}-${1:`!v strftime("%d")`} - 20${6:`!v strftime("%y")`}-${5:`!v strftime("%m")`}-${4:`!v strftime("%d")`}:
  

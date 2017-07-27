@@ -32,10 +32,15 @@ endif
 
 let g:neosnippet#snippets_directory = get(g:,'neosnippet#snippets_directory',
       \ '')
+
       
 if empty(g:neosnippet#snippets_directory)
-  let g:neosnippet#snippets_directory = s:snippsVimwikiDir
+  let g:neosnippet#snippets_directory = [s:snippsVimwikiDir]
   
 else
-  let g:neosnippet#snippets_directory = g:neosnippet#snippets_directory + [s:snippsVimwikiDir]
+    if type(g:neosnippet#snippets_directory) == 1
+      let g:neosnippet#snippets_directory = g:neosnippet#snippets_directory.','.s:snippsVimwikiDir
+    elseif  type(g:neosnippet#snippets_directory) == 3
+      let g:neosnippet#snippets_directory = add(g:neosnippet#snippets_directory, s:snippsVimwikiDir)
+
 endif

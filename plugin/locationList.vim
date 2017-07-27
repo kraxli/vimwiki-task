@@ -50,7 +50,6 @@ function! GetPatternsWiki(files2search, ...)
   let tagList = a:000
   " let tagsSeparated = s:buildSeparatedList(tagList, "\\>\\|\\<", "\\<", "\\>")
   let tagsSeparated = s:buildSeparatedList(tagList, "\\|", "", "")
-  echo tagsSeparated
 
 
   if files2search == "*"

@@ -46,6 +46,11 @@ for ```vimwiki-task folding style```:
 ``` vim
 <leader>td  " task done, adds the date at which the task was done
 <leader>tm  " move task to the botom. My last section is 'Tasks Completed'
+
+<leader>li  " includes * [ ] 
+ 
+<leader>dt  " includes a due date of the form @2017-07-27:
+<leader>dr  " inculdes a due date of the form @2017-07-27 - 2017-08-09:
 ```
 
 ### mappings to put to your .vimrc/init.vim file to help simplify things

@@ -2,11 +2,11 @@
 
 # (c) holds no legal value ;)
 # snippet c)
-#	 Copyright `&enc[:2] == "utf" ? "©" : "(c)"` `strftime("%Y")` ${1:`g:snips_author`}. All Rights Reserved.
+# 	 Copyright `&enc[:2] == "utf" ? "©" : "(c)"` `strftime("%Y")` ${1:`g:snips_author`}. All Rights Reserved.
   
 snippet dt
 	@20${3:`strftime("%y")`}-${2:`strftime("%m")`}-${1:`strftime("%d")`}:${0}
 
 snippet dr
-	@20${3:`!v strftime("%y")`}-${2:`!v strftime("%m")`}-${1:`!v strftime("%d")`} - 20${6:`!v strftime("%y")`}-${5:`!v strftime("%m")`}-${4:`!v strftime("%d")`}:
+	@20${3:`strftime("%y")`}-${2:`strftime("%m")`}-${1:`strftime("%d")`} - 20${6:`strftime("%y")`}-${5:`strftime("%m")`}-${4:`strftime("%d")`}:
  

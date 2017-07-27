@@ -34,9 +34,8 @@ let g:neosnippet#snippets_directory = get(g:,'neosnippet#snippets_directory',
       \ '')
       
 if empty(g:neosnippet#snippets_directory)
-  let g:neosnippet#snippets_directory = [s:snippsVimwikiDir]
+  let g:neosnippet#snippets_directory = s:snippsVimwikiDir
   
 else
-  let g:neosnippet#snippets_directory = [s:snippsVimwikiDir] +
-        \ g:neosnippet#snippets_directory
+  let g:neosnippet#snippets_directory = g:neosnippet#snippets_directory + [s:snippsVimwikiDir]
 endif

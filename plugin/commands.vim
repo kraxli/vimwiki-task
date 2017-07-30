@@ -40,6 +40,7 @@ command! -nargs=* GetNextDaysWiki call GetNextDaysWiki(<f-args>)
 command! -nargs=1 GetHistoryWiki call GetHistoryWiki(<f-args>)
 
 
+command! -nargs=1  DueDate call DueDate(<f-args>)
 
 
 " }}}  

@@ -276,7 +276,7 @@ function! MoveFoldToFileEnd()
   " ========================================================
   " restore fold-level instead of following just opening it:
   
-  " see function! OpenFoldIfClosed() in " vim/bundle/vim-dway/plugin/my_function_collection.vim
+  " see function!)OpenFoldIfClosed() in " vim/bundle/vim-dway/plugin/my_function_collection.vim
   if foldclosed(line('.')) > -1
       execute "silent! normal ".foldlevel(line('.'))."zo"
   endif
@@ -294,5 +294,4 @@ endfunction
 "   setlocal foldexpr=VimwikiFoldLevelAll(v:lnum)
 "   setlocal foldtext=VimwikiFoldText() "
 " endif
- 
 

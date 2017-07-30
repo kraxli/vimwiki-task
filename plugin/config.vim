@@ -1,15 +1,27 @@
 let g:vimwiki_task_root = expand('<sfile>:p:h:h')
 set rtp+=g:vimwiki_task_root  
 
+" execute (has('python3') ? 'py3file' : 'pyfile') script_path
+
+function! PyImports()
+Py << EOF
+    import sys; import vim; sys.path.insert(0, vim.eval('g:vimwiki_task_root')) 
+   py3 from pythonVWT.vimwiki_task import SortRangePy, getHistory, getNextDays, browseWikiDirectory, loadBuffer, getNextDaysFromWiki, getPastDatesFromWiki
+EOF
+endfunction
 
 if has('python3')
-   py3 import sys; import vim; sys.path.insert(0, vim.eval('g:vimwiki_task_root')) 
-   py3 from pythonVWT.vimwiki_task import SortRangePy, getHistory, getNextDays, browseWikiDirectory, loadBuffer, getNextDaysFromWiki, getPastDatesFromWiki
+   " py3 import sys; import vim; sys.path.insert(0, vim.eval('g:vimwiki_task_root')) 
+   " py3 from pythonVWT.vimwiki_task import SortRangePy, getHistory, getNextDays, browseWikiDirectory, loadBuffer, getNextDaysFromWiki, getPastDatesFromWiki
+  command! -nargs=* Py py3 <args>
+  call PyImports()
 endif
 
 if has('python')
-   python import sys; import vim; sys.path.insert(0, vim.eval('g:vimwiki_task_root')) 
-   python from pythonVWT.vimwiki_task import SortRangePy, getHistory, getNextDays, browseWikiDirectory, loadBuffer, getNextDaysFromWiki, getPastDatesFromWiki
+   " python import sys; import vim; sys.path.insert(0, vim.eval('g:vimwiki_task_root')) 
+   " python from pythonVWT.vimwiki_task import SortRangePy, getHistory, getNextDays, browseWikiDirectory, loadBuffer, getNextDaysFromWiki, getPastDatesFromWiki
+  command! -nargs=* Py python <args>
+  call PyImports()
 endif
 
 if !has('python') && !has('python3')
@@ -17,10 +29,8 @@ if !has('python') && !has('python3')
 endif
 
 
-
 let s:ultisnipVimwikiDir = g:vimwiki_task_root."/UltiSnips"
 let s:snippsVimwikiDir = g:vimwiki_task_root."/snippets"
-let g:xxx = s:snippsVimwikiDir
 
 
 if !exists("g:UltiSnipsSnippetsDir")

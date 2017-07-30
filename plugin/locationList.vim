@@ -66,7 +66,7 @@ endfunction
 
 function! GetPast()
 
-py << EOF
+Py << EOF
 # getHistory is only for the open file and so is GetPast
 pastDates = getHistory(	
 											 dateFormat=vim.eval("g:vwt#variables#pythonDateFormat"), 
@@ -84,7 +84,7 @@ endfunction
 
 function! GetNextDays(numDays)
 
-py << EOF
+Py << EOF
 dateSequence = getNextDays(
 											numDays = vim.eval("a:numDays"), 
 											buffer = vim.current.buffer,
@@ -113,7 +113,7 @@ endfunction
 
 function! GetNextDaysWiki(numDays, filePattern)
 
-py << EOF
+Py << EOF
 dateSequence = getNextDaysFromWiki(
 											numDays = vim.eval("a:numDays"), 
                       filePattern = vim.eval("a:filePattern"),
@@ -131,7 +131,7 @@ endfunction
 
 function! GetHistoryWiki(filePattern)
 
-py << EOF
+Py << EOF
 dateSequence = getPastDatesFromWiki(
                       filePattern = vim.eval("a:filePattern"),
 											dateFormat = vim.eval("g:vwt#variables#pythonDateFormat"),

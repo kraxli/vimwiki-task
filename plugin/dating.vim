@@ -36,7 +36,7 @@ endfunction
 " {{{ PyShowNextDays
 function! PyShowNextDays(numDays)
 
-py << EOF
+Py << EOF
 dateSequence = getNextDays(
 											numDays = vim.eval("a:numDays"), 
 											buffer = vim.current.buffer,
@@ -69,7 +69,7 @@ else
   let l:dueDatePattern = ""
 endif        
 
-py << EOF
+Py << EOF
 pastDates = getHistory(	
 											dateFormat=vim.eval("g:vwt#variables#pythonDateFormat"), 
 											buffer = vim.current.buffer,
@@ -97,7 +97,7 @@ endfunction
 " {{{  DueDate
 function DueDate(num)
 
-py << EOF
+Py << EOF
 
 import datetime as dt
 import vim

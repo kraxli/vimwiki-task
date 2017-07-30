@@ -78,7 +78,7 @@ hi link vimwikiTaskMilestone pandocDefinitionTerm
 "  syn match VimwikiHeader4Date /\v\d{4}-\d\d-\d\d( \d\d:\d\d)?/ contained containedin=VimwikiHeader4
 " =======================================================
 function! Check4TaskedStatus()
-py << EOF
+Py << EOF
 import vim, re
 lnum = int(vim.eval("line('.')"))
 sw = vim.eval("&sw")

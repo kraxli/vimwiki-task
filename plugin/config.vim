@@ -5,8 +5,10 @@ set rtp+=g:vimwiki_task_root
 
 function! PyImports()
 Py << EOF
-    import sys; import vim; sys.path.insert(0, vim.eval('g:vimwiki_task_root')) 
-   py3 from pythonVWT.vimwiki_task import SortRangePy, getHistory, getNextDays, browseWikiDirectory, loadBuffer, getNextDaysFromWiki, getPastDatesFromWiki
+import sys, vim 
+sys.path.insert(0, vim.eval('g:vimwiki_task_root')) 
+from pythonVWT.vimwiki_task import SortRangePy, getHistory, getNextDays, browseWikiDirectory, loadBuffer, getNextDaysFromWiki, getPastDatesFromWiki
+
 EOF
 endfunction
 

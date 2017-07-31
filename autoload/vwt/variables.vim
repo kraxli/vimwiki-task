@@ -22,9 +22,8 @@ if !exists("g:vwt#variables#tagPattern")
 endif   
 
 if !exists("g:vwt#variables#startDatePattern")
-    " let  g:vwt#variables#startDatePattern = "@\\s*\\d{4}-\\d{2}-\\d{2}[0-9- ]*:"
-    let  g:vwt#variables#startDatePattern = g:vwt#variables#dueDateIndicator."[0-9".g:vwt#variables#dateRangeSeperator." ]*"
-    " let  g:vwt#variables#startDatePattern = g:vwt#variables#dueDateIndicator."\\s*".g:vwt#variables#dateFormat."\\s*".g:vwt#variables#dateRangeSeperator."\\s*".g:vwt#variables#dateFormat
+    " let  g:vwt#variables#startDatePattern = g:vwt#variables#dueDateIndicator."[0-9".g:vwt#variables#dateRangeSeperator." ]*"
+    let  g:vwt#variables#startDatePattern = g:vwt#variables#dueDateIndicator."\\s*".g:vwt#variables#dateFormat."\\s*".g:vwt#variables#dateRangeSeperator."\\s*".g:vwt#variables#dateFormat
 endif   
 
 if !exists("g:vwt#variables#startDateSubPattern")

@@ -95,7 +95,7 @@ endfunction
 
  
 " {{{  InsertDueDate
-function InsertDueDate(num)
+function! InsertDueDate(num)
 
 Py << EOF
 
@@ -123,7 +123,7 @@ endfunction
 " }}}
                 
 " {{{  InsertDueRange
-function InsertDueRange(num1, num2)
+function! InsertDueRange(num1, num2)
 
 Py << EOF
 

@@ -83,5 +83,7 @@ noremap <c-k> :lpr<cr>
 * [ ] use python and vim coding standards
 * [ ] much more functionality 
 * [ ] your contribution :-) 
+* [ ] for ShowPast / ShowNextDays ... match/highlight only due dates (not start dates) or math the range and not dates displayed only
+* [ ] SortByStartDate do not sort due dates only lines
  
 

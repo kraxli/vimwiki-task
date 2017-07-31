@@ -15,11 +15,11 @@ endfunction
 if has('python3')
    " py3 import sys; import vim; sys.path.insert(0, vim.eval('g:vimwiki_task_root')) 
    " py3 from pythonVWT.vimwiki_task import SortRangePy, getHistory, getNextDays, browseWikiDirectory, loadBuffer, getNextDaysFromWiki, getPastDatesFromWiki
-  command! -nargs=* Py py3 <args>
+  command! -range -nargs=* Py py3 <args>
   call PyImports()
-endif
+" endif
 
-if has('python')
+elseif has('python')
    " python import sys; import vim; sys.path.insert(0, vim.eval('g:vimwiki_task_root')) 
    " python from pythonVWT.vimwiki_task import SortRangePy, getHistory, getNextDays, browseWikiDirectory, loadBuffer, getNextDaysFromWiki, getPastDatesFromWiki
   command! -nargs=* Py python <args>

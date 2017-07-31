@@ -94,36 +94,64 @@ endfunction
 " }}} end PyShowPast
 
  
-" {{{  DueDate
-function DueDate(num)
+" {{{  InsertDueDate
+function InsertDueDate(num)
 
 Py << EOF
 
-import datetime as dt
-import vim
-
 dateFormat= vim.eval("g:vwt#variables#pythonDateFormat")
 # date_1 = datetime.datetime.strptime(start_date, "%m/%d/%y")
+
 num = float(vim.eval("a:num"))
-date = dt.datetime.today() + dt.timedelta(days=num)
-date = date.strftime(dateFormat)
+year, month, day = get_date_from_today_on(num)
 
-
-vim.command("let s:date = " + date)
-vim.command('exe ":normal i "' + date)
+vim.command("let l:day = " + day)
+vim.command("let l:month = " + month)
+vim.command("let l:year = " + year)
+# vim.command('exe ":normal i "' + year +  "-" + "printf('%04d'," + month + ")" + "-" + day)
 
 EOF
 
+exe ":normal i @" . l:year . "-" . printf('%02d', l:month) . "-" . printf('%02d', l:day) . ":"
+
 " https://unix.stackexchange.com/questions/8101/how-to-insert-the-result-of-a-command-into-the-text-in-vim 
+" call feedkeys("i". l:date)
 " exe '"=strftime('%c')<C-M>p'
 " :call feedkeys("i". strftime("%c"))
-
-" exe ":normal i " . s:date
-" call feedkeys("i". s:date)
 
 endfunction
 " }}}
                 
+" {{{  InsertDueRange
+function InsertDueRange(num1, num2)
+
+Py << EOF
+
+num1 = float(vim.eval("a:num1"))
+num2 = float(vim.eval("a:num2"))
+
+year1, month1, day1 = get_date_from_today_on(num1)
+year2, month2, day2 = get_date_from_today_on(num2)
+
+vim.command("let l:day1 = " + day1)
+vim.command("let l:month1 = " + month1)
+vim.command("let l:year1 = " + year1)
+
+vim.command("let l:day2 = " + day2)
+vim.command("let l:month2 = " + month2)
+vim.command("let l:year2 = " + year2) 
+
+EOF
+
+exe ":normal i @" . l:year1 . "-" . printf('%02d', l:month1) . "-" . printf('%02d', l:day1) .  " - " . l:year2 . "-" . printf('%02d', l:month2) . "-" . printf('%02d', l:day2) . ":"
+
+" https://unix.stackexchange.com/questions/8101/how-to-insert-the-result-of-a-command-into-the-text-in-vim 
+" call feedkeys("i". l:date)
+" exe '"=strftime('%c')<C-M>p'
+" :call feedkeys("i". strftime("%c"))
+
+endfunction
+" }}}  
 
 " }}}
 

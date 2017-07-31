@@ -27,3 +27,11 @@ vnoremap <leader>tm :call MoveFoldToFileEnd()<cr>
 "     let b:quicktask_did_mappings = 1
 " endif   "
 "   }}}
+
+nnoremap <s-F4> ^"=strftime("%H:%M")."-"<CR>P$ 
+" nnoremap <c-F4> ^E"=strftime("%H:%M")<CR>po<esc>^^
+nnoremap <c-F4> ^E"=strftime("%H:%M")<CR>po<esc>^^"=strftime("%H:%M")."- "<CR>Pa
+" nnoremap <c-F4> :s/\(\d{2}:\d{2}\)/\1"=strftime("%H:%M")<CR>P 
+
+nnoremap <F4> "=strftime("%Y-%m-%d")<CR>p 
+inoremap <F4> <C-R>=strftime("%Y-%m-%d")<CR>

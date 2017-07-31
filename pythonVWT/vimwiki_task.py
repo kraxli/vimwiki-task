@@ -24,7 +24,7 @@ def SortRangePy(pattern, bReverse=0, subpattern=None):
     sortingDic = subitemHandler(indentStruc, minIndent)
 
     linePatternDict = getLineNumberAndMatch(sortingDic, buf, pattern, subpattern)
-    linePatternDict = OrderedDict(sorted(linePatternDict.items(), key=lambda t: t[1].lower())).items()
+    linePatternDict = list(OrderedDict(sorted(list(linePatternDict.items()), key=lambda t: t[1].lower())).items())
 
     if bReverse:
         linePatternDict.reverse()
@@ -32,14 +32,14 @@ def SortRangePy(pattern, bReverse=0, subpattern=None):
     newLineOrder = []
     sortedLines = [i[0] for i in linePatternDict]
 
-    filter(lambda x: newLineOrder.extend(sortingDic[x]), sortedLines)
+    [x for x in sortedLines if newLineOrder.extend(sortingDic[x])]
 
-    lineMapping = dict(zip(range(raMin, raMax + 1), newLineOrder))
+    lineMapping = dict(list(zip(list(range(raMin, raMax + 1)), newLineOrder)))
 
     lines = {}
-    filter(lambda ll: lines.update({ll: buf[ll]}), range(raMin, raMax + 1))
+    [ll for ll in range(raMin, raMax + 1) if lines.update({ll: buf[ll]})]
 
-    for orgL, newL in lineMapping.iteritems():
+    for orgL, newL in lineMapping.items():
         buf[orgL] = lines[newL]
 
     pass
@@ -67,7 +67,7 @@ def getLineNumberAndMatch(sortingDic, buf, pattern, subpattern=None):
     defautlString = "{}"
 
     # .. sort the lines in lines2sort given the sorting pattern
-    for ll in sortingDic.keys():
+    for ll in list(sortingDic.keys()):
       search1 = re.search(pattern, buf[ll])  # , re.IGNORECASE
 
       if (search1 is not None) and (subpattern is not None):
@@ -103,7 +103,7 @@ def subitemHandler(indentStruc, indent2SortOn):
     nonsortedLines = []
     itemList = []
 
-    for lineNumber, indent in indentStruc.iteritems():
+    for lineNumber, indent in indentStruc.items():
        if indent == indent2SortOn:
           itemList = [lineNumber]
        elif indent > indent2SortOn:
@@ -222,7 +222,7 @@ def getPastDatesFromWiki(filePattern, dateFormat, vimTaskDate, vimDatePattern):
     dateList = list(set(re.findall(vimDatePattern, dateList)))
 
     hist = lambda d: dt.datetime.strptime(d, dateFormat).date() < today
-    pastDates = filter(hist, dateList)
+    pastDates = list(filter(hist, dateList))
 
     return pastDates
 
@@ -231,3 +231,17 @@ def _getFilePathList(filePattern):
     vimwikiPath, textFiles = browseWikiDirectory(filePattern)
     filePathList = [vimwikiPath + f for f in textFiles]
     return filePathList
+
+
+def get_date_from_today_on(num):
+
+    import datetime as dt
+
+    date = dt.datetime.today() + dt.timedelta(days=num)
+    # date_str = date.strftime(dateFormat)
+    day = '%02d' % date.day
+    month = '%02d' % date.month # date.strftime('%m')
+    year = date.strftime('%Y')
+
+    return year, month, day
+

@@ -7,7 +7,7 @@ I started this project to get into vim plugins, vimscripting, and python program
 
 ## Installation
 
-- Prerequisites: ```vimwiki/vimwiki```
+- Prerequisites: ```vimwiki/vimwiki``` and ```python2```
 - using vim-plug: ``` plug 'kraxli/vimwiki-task' ```
 
 
@@ -40,6 +40,9 @@ for ```vimwiki-task folding style```:
 
   GetNextDays arg: numberOfDays
   GetPast  
+
+  InsertDueDate / Idd int   : insert a due date in "int" days like @2017-08-03: (only this impelmentation - not customizable) 
+  InsertDueRange int_1 int_2 / Idr . . : insert a the date in "int" date range like @2017-08-04 - 2017-08-09:  (only this impelmentation - not customizable) 
 ```
 
 ### Key mappings
@@ -66,6 +69,11 @@ move down/up the items:
 ``` vim
 noremap <c-s-j> :lne<cr>
 noremap <c-k> :lpr<cr>
+
+<s-F4> (normal mode): insert current time at the beginning of the line
+<c-F4> (normal mode): insert current time at the end of the current line and at the beginning of the line
+
+<F4> insert todays date (in normal and insert mode)
 ```
 
 ## To-Do's

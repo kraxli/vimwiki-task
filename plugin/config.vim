@@ -7,7 +7,7 @@ function! PyImports()
 Py << EOF
 import sys, vim 
 sys.path.insert(0, vim.eval('g:vimwiki_task_root')) 
-from pythonVWT.vimwiki_task import SortRangePy, getHistory, getNextDays, browseWikiDirectory, loadBuffer, getNextDaysFromWiki, getPastDatesFromWiki
+from pythonVWT.vimwiki_task import SortRangePy, getHistory, getNextDays, browseWikiDirectory, loadBuffer, getNextDaysFromWiki, getPastDatesFromWiki, get_date_from_today_on
 
 EOF
 endfunction

@@ -84,6 +84,7 @@ def getLineNumberAndMatch(sortingDic, buf, pattern, subpattern=None):
         search2 = search1.group()
 
       elif (search1 is None) and (buf[ll] is ""):
+        # import string; sorted(list(string.printable))
         # hopefully this is the last ascii character!
         emptyLines.update({ll: "~~~~~~"})
         next

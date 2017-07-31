@@ -7,6 +7,10 @@ if !exists("g:vwt#variables#pythonDateFormat")
    let g:vwt#variables#pythonDateFormat = "%Y-%m-%d"
 endif
 
+if !exists("g:vwt#variables#dueDateIndicator")
+   let g:vwt#variables#dueDateIndicator = "@"
+endif    
+
 if !exists("g:vwt#variables#dateRangeSeperator")
    let g:vwt#variables#dateRangeSeperator = "-"
 endif
@@ -19,11 +23,15 @@ endif
 
 if !exists("g:vwt#variables#startDatePattern")
     " let  g:vwt#variables#startDatePattern = "@\\s*\\d{4}-\\d{2}-\\d{2}[0-9- ]*:"
-    let  g:vwt#variables#startDatePattern = "@\\s*".g:vwt#variables#dateFormat."[0-9".g:vwt#variables#dateRangeSeperator." ]*"
+    let  g:vwt#variables#startDatePattern = g:vwt#variables#dueDateIndicator."[0-9".g:vwt#variables#dateRangeSeperator." ]*"
+    " let  g:vwt#variables#startDatePattern = g:vwt#variables#dueDateIndicator."\\s*".g:vwt#variables#dateFormat."\\s*".g:vwt#variables#dateRangeSeperator."\\s*".g:vwt#variables#dateFormat
 endif   
 
 if !exists("g:vwt#variables#startDateSubPattern")
-   let g:vwt#variables#startDateSubPattern = "@".g:vwt#variables#dateFormat."\\s*".g:vwt#variables#dateRangeSeperator."\\s*".g:vwt#variables#dateFormat
+    let  g:vwt#variables#startDateSubPattern = g:vwt#variables#dueDateIndicator."\\s*".g:vwt#variables#dateFormat."\\s*".g:vwt#variables#dateRangeSeperator."\\s*".g:vwt#variables#dateFormat
+
+   " let g:vwt#variables#startDateSubPattern = g:vwt#variables#dueDateIndicator.g:vwt#variables#dateFormat
+   "."\\s*".g:vwt#variables#dateRangeSeperator."\\s*".g:vwt#variables#dateFormat
 endif
 
 if !exists("g:vwt#variables#endDatePattern")

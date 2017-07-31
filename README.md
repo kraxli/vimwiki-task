@@ -70,10 +70,10 @@ move down/up the items:
 noremap <c-s-j> :lne<cr>
 noremap <c-k> :lpr<cr>
 
-<s-F4> (normal mode): insert current time at the beginning of the line
-<c-F4> (normal mode): insert current time at the end of the current line and at the beginning of the line
+<s-F4> (normal mode): inserts current time at the beginning of the line
+<c-F4> (normal mode): inserts current time at the end of the current line and at the beginning of the line
 
-<F4> insert todays date (in normal and insert mode)
+<F4> inserts today's date (in normal and insert mode)
 ```
 
 ## To-Do's
@@ -81,9 +81,11 @@ noremap <c-k> :lpr<cr>
 * [ ] clean up
 * [ ] make all functions work
 * [ ] use python and vim coding standards
-* [ ] much more functionality 
-* [ ] your contribution :-) 
-* [ ] for ShowPast / ShowNextDays ... match/highlight only due dates (not start dates) or math the range and not dates displayed only
+* [?] for ShowPast / ShowNextDays ... match/highlight only due dates (not start dates) or math the range and not dates displayed only
 * [ ] SortByStartDate do not sort due dates only lines
+* [ ] highlight active ranges, highlight past due dates
+* [ ] function to show all ranges/acitve tasks for a specific date 
+* [ ] ...
+* [ ] your contribution :-) 
  
 

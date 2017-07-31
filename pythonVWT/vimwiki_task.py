@@ -25,6 +25,7 @@ def SortRangePy(pattern, bReverse=0, subpattern=None):
 
     linePatternDict = getLineNumberAndMatch(sortingDic, buf, pattern, subpattern)
     linePatternDict = list(OrderedDict(sorted(list(linePatternDict.items()), key=lambda t: t[1].lower())).items())
+    # print(linePatternDict)
 
     if bReverse:
         linePatternDict.reverse()
@@ -52,12 +53,14 @@ def SortRangePy(pattern, bReverse=0, subpattern=None):
 def getSubpattern(search1, subpattern):
     # search2 = re.search(subpattern, search1.group())
     searchResultsList = re.findall(subpattern, search1.group())
+    print (searchResultsList)
 
     if searchResultsList is None or searchResultsList == []:
       search2 = search1.group()
     else:
       search2 = searchResultsList[-1]
 
+    print("search2: ", search2)
     return(search2)
 
 
@@ -69,9 +72,11 @@ def getLineNumberAndMatch(sortingDic, buf, pattern, subpattern=None):
     # .. sort the lines in lines2sort given the sorting pattern
     for ll in list(sortingDic.keys()):
       search1 = re.search(pattern, buf[ll])  # , re.IGNORECASE
+      # print("search1: ", search1)
 
       if (search1 is not None) and (subpattern is not None):
         search2 = getSubpattern(search1, subpattern)
+        # print("search2: ", search2)
 
       elif (search1 is not None) and (subpattern is None):
         search2 = search1.group()

@@ -82,7 +82,7 @@ noremap <c-k> :lpr<cr>
 * [ ] make all functions work
 * [ ] use python and vim coding standards
 * [?] for ShowPast / ShowNextDays ... match/highlight only due dates (not start dates) or math the range and not dates displayed only
-* [ ] SortByStartDate do not sort due dates only lines
+* [X] SortByStartDate: do not sort due dates only lines -> Solved by pattern and handling emtpy lines with "end" pattern '~~~~'
 * [ ] highlight active ranges, highlight past due dates
 * [ ] function to show all ranges/acitve tasks for a specific date 
 * [ ] ...

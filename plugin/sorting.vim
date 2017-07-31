@@ -46,8 +46,8 @@ function! VwtSortByStartDate()
     " '<,'>:Py SortRangePy(vim.eval("g:vwt#variables#startDatePattern"), bReverse=0, subpattern=vim.eval("g:vwt#variables#startDateSubPattern"))
     " \v\@[0-9- ]*\d{4}-\d{2}-\d{2}\:
 
-    execute "'<,'>".g:_python.'SortRangePy(vim.eval("g:vwt#variables#startDatePattern"), bReverse=0, subpattern=None)'
     " execute "'<,'>".g:_python.'SortRangePy(vim.eval("g:vwt#variables#startDatePattern"), bReverse=0, subpattern=vim.eval("g:vwt#variables#startDateSubPattern"))'
+    execute "'<,'>".g:_python.'SortRangePy(vim.eval("g:vwt#variables#startDatePattern"), bReverse=0, subpattern=None)'
     execute "silent! normal zm"
     execute "silent! normal zo"
 endfunction

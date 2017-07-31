@@ -50,23 +50,25 @@ def SortRangePy(pattern, bReverse=0, subpattern=None):
 #######################################################
 
 
-def getSubpattern(search1, subpattern):
+def getSubpattern(search1, subpattern, element=-1):
     # search2 = re.search(subpattern, search1.group())
     searchResultsList = re.findall(subpattern, search1.group())
-    print (searchResultsList)
+    # print (searchResultsList)
 
     if searchResultsList is None or searchResultsList == []:
       search2 = search1.group()
     else:
-      search2 = searchResultsList[-1]
+      # get element (last element: -1)
+      search2 = searchResultsList[element]
 
-    print("search2: ", search2)
+    # print("search2: ", search2)
     return(search2)
 
 
 def getLineNumberAndMatch(sortingDic, buf, pattern, subpattern=None):
 
     linePatternDict = {}
+    emptyLines = {}
     defautlString = "{}"
 
     # .. sort the lines in lines2sort given the sorting pattern
@@ -81,11 +83,17 @@ def getLineNumberAndMatch(sortingDic, buf, pattern, subpattern=None):
       elif (search1 is not None) and (subpattern is None):
         search2 = search1.group()
 
+      elif (search1 is None) and (buf[ll] is ""):
+        # hopefully this is the last ascii character!
+        emptyLines.update({ll: "~~~~~~"})
+        next
       else:
         search2 = defautlString
 
       linePatternDict.update({ll: search2})
 
+    linePatternDict.update(emptyLines)
+    # print(linePatternDict)
     return linePatternDict
 
 

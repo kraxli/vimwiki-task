@@ -34,7 +34,7 @@ if !exists("g:vwt#variables#startDateSubPattern")
 endif
 
 if !exists("g:vwt#variables#endDatePattern")
-    " let  g:vwt#variables#endDatePattern = "@[0-9- ]*\\d{4}-\\d{2}-\\d{2}:*"
+    " let  g:vwt#variables#endDatePattern = "@[0-9- ]*\\d{4}-\\d{2}-\\d{2}:"
     let  g:vwt#variables#endDatePattern = "@[0-9".g:vwt#variables#dateRangeSeperator." ]*".g:vwt#variables#dateFormat
 endif   
 

@@ -38,16 +38,22 @@ function! PyShowNextDays(numDays)
 
 Py << EOF
 dateSequence = getNextDays(
-											numDays = vim.eval("a:numDays"), 
-											buffer = vim.current.buffer,
-											dateFormat = vim.eval("g:vwt#variables#pythonDateFormat"),
-											vimTaskDate = vim.eval("g:vwt#variables#endDatePattern"),
-											vimDatePattern = vim.eval("g:vwt#variables#dateFormat")
-										)
+						   numDays = vim.eval("a:numDays"), 
+						   buffer = vim.current.buffer,
+						   dateFormat = vim.eval("g:vwt#variables#pythonDateFormat"),
+						   vimTaskDate = vim.eval("g:vwt#variables#endDatePattern"),
+						   vimDatePattern = vim.eval("g:vwt#variables#dateFormat")
+						  )
 
-vim.command("let dateSequence = join(" + str(dateSequence) + ", '\|')")  # or \\|
+if has("unix")                                            
+    vim.command("let dateSequence = join(" + str(dateSequence) + ", '\|')")  # or \\|
+else
+" elseif (has("win64") || has("win32") || has("win16")) 
+    vim.command("let dateSequence = join(" + str(dateSequence) + ", '\\|')")  # or \\|
+
 EOF
 
+ 
 if exists("dateSequence")
   let l:searchString = s:buildSearchString(dateSequence, "")
   call s:executeSearch(l:searchString)
@@ -71,23 +77,21 @@ endif
 
 Py << EOF
 pastDates = getHistory(	
-											dateFormat=vim.eval("g:vwt#variables#pythonDateFormat"), 
-											buffer = vim.current.buffer,
-											vimTaskDate=vim.eval("g:vwt#variables#endDatePattern"),
-           						vimDatePattern=vim.eval("g:vwt#variables#dateFormat")
-											)
+					   dateFormat=vim.eval("g:vwt#variables#pythonDateFormat"), 
+					   buffer = vim.current.buffer,
+					   vimTaskDate=vim.eval("g:vwt#variables#endDatePattern"),
+           			   vimDatePattern=vim.eval("g:vwt#variables#dateFormat")
+					  )
 
-vim.command("let date_seq_unix = join(" + str(pastDates) + ", '\|')")  # or \\|
+if has("unix")                                            
+    vim.command("let date_seq = join(" + str(pastDates) + ", '\|')")  # or \\|
+else
+" elseif (has("win64") || has("win32") || has("win16")) 
+    vim.command("let date_seq = join([date_seq_mswin, '" + str(date_object) + "'], '\\|')")      
+
 EOF
 
-if has("unix") 
-  let l:searchString = s:buildSearchString(date_seq_unix, l:dueDatePattern)
-
-elseif (has("win64") || has("win32") || has("win16")) 
-  let l:searchString = s:buildSearchString(date_seq_unix, l:dueDatePattern)
-
-endif
-
+let l:searchString = s:buildSearchString(date_seq, l:dueDatePattern)
 call s:executeSearch(l:searchString)
 
 endfunction   
@@ -95,7 +99,7 @@ endfunction
 
  
 " {{{  InsertDueDate
-function! InsertDueDate(num)
+function InsertDueDate(num)
 
 Py << EOF
 
@@ -123,7 +127,7 @@ endfunction
 " }}}
                 
 " {{{  InsertDueRange
-function! InsertDueRange(num1, num2)
+function InsertDueRange(num1, num2)
 
 Py << EOF
 

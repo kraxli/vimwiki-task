@@ -93,6 +93,7 @@ EOF
 
 " elseif (has("win64") || has("win32") || has("win16")) 
 let l:searchString = s:buildSearchString(date_seq, l:dueDatePattern)
+echo l:searchString
 call s:executeSearch(l:searchString)
 
 endfunction   

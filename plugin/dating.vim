@@ -8,6 +8,8 @@
 function! s:buildSearchString(dates2search, addonPattern)
   let dates2search = a:dates2search
 
+  " " worked on unix:
+  " let searchString = "\\c\\(\* \\[X\\].\*\\)\\@<!\\(@\[0-9- \]*\\)\\<\\(".a:dates2search."\\)\\>".a:addonPattern."\\(.\*DONE\\)\\@!"
   let searchString = "\\c\\(\* \\[X\\].\*\\)\\@<!\\(@\[0-9- \]*\\)\\<\\(".a:dates2search."\\):*\\>".a:addonPattern."\\(.\*DONE\\)\\@!"
 
   " if has("unix")

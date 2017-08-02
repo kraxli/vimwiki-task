@@ -172,13 +172,13 @@ def getNextDays(numDays, buffer, dateFormat, vimTaskDate, vimDatePattern):
       search_res = re.search(vimTaskDate, line)
       if search_res is not None:
         dd_date_bracket = search_res.group()
-        dd_date = re.search(vimDatePattern, dd_date_bracket).group()
-        date_object = dt.datetime.strptime(dd_date, dateFormat).date()
-        print("date_object: ", date_object)
+        date_list = re.findall(vimDatePattern, dd_date_bracket)
 
-        if (date_object <= ref_date) and (date_object >= today):
-          print("relevant date: ", date_object)
-          dateSequence.append(str(date_object))
+        for dd_date in date_list:
+          date_object = dt.datetime.strptime(dd_date, dateFormat).date()
+
+          if (date_object <= ref_date) and (date_object >= today):
+            dateSequence.append(str(date_object))
 
     return dateSequence
 

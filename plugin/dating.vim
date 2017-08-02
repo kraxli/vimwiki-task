@@ -45,15 +45,12 @@ dateSequence = getNextDays(
 						   vimDatePattern = vim.eval("g:vwt#variables#dateFormat")
 						  )
 
-if has("unix")                                            
-    vim.command("let dateSequence = join(" + str(dateSequence) + ", '\|')")  # or \\|
-else
-" elseif (has("win64") || has("win32") || has("win16")) 
-    vim.command("let dateSequence = join(" + str(dateSequence) + ", '\\|')")  # or \\|
+vim.command("let dateSequence = join(" + str(dateSequence) + ", '\|')")  # or \\|
 
 EOF
 
  
+" elseif (has("win64") || has("win32") || has("win16")) 
 if exists("dateSequence")
   let l:searchString = s:buildSearchString(dateSequence, "")
   call s:executeSearch(l:searchString)
@@ -82,15 +79,19 @@ pastDates = getHistory(
 					   vimTaskDate=vim.eval("g:vwt#variables#endDatePattern"),
            			   vimDatePattern=vim.eval("g:vwt#variables#dateFormat")
 					  )
+print(pastDates)
 
-if has("unix")                                            
-    vim.command("let date_seq = join(" + str(pastDates) + ", '\|')")  # or \\|
-else
-" elseif (has("win64") || has("win32") || has("win16")) 
-    vim.command("let date_seq = join([date_seq_mswin, '" + str(date_object) + "'], '\\|')")      
+vim.command("let date_seq = join(" + str(pastDates) + ", '\|')")  # or \\|
+# if sys.platform.lower().startswith('win'):
+#     vim.command("let date_seq = join(" + str(pastDates) + ", '\\|')")      
+#     # vim.command("let date_seq = join([date_seq_mswin, '" + str(date_object) + "'], '\\|')")      
+# else:
+#     vim.command("let date_seq = join(" + str(pastDates) + ", '\|')")  # or \\|
+
 
 EOF
 
+" elseif (has("win64") || has("win32") || has("win16")) 
 let l:searchString = s:buildSearchString(date_seq, l:dueDatePattern)
 call s:executeSearch(l:searchString)
 

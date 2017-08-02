@@ -131,7 +131,7 @@ def subitemHandler(indentStruc, indent2SortOn):
     return sortingDic
 
 
-def getHistory(dateFormat, buffer, vimTaskDate, vimDatePattern):
+def getHistory(buffer, dateFormat, vimTaskDate, vimDatePattern):
 
     today = dt.datetime.today().date()
     pastDates = []
@@ -174,8 +174,10 @@ def getNextDays(numDays, buffer, dateFormat, vimTaskDate, vimDatePattern):
         dd_date_bracket = search_res.group()
         dd_date = re.search(vimDatePattern, dd_date_bracket).group()
         date_object = dt.datetime.strptime(dd_date, dateFormat).date()
+        print("date_object: ", date_object)
 
-        if date_object <= ref_date and date_object >= today:
+        if (date_object <= ref_date) and (date_object >= today):
+          print("relevant date: ", date_object)
           dateSequence.append(str(date_object))
 
     return dateSequence

@@ -8,9 +8,10 @@
 function! s:buildSearchString(dates2search, addonPattern)
   let dates2search = a:dates2search
 
-  " if has("unix")
-	let searchString = "\\c\\(\* \\[X\\].\*\\)\\@<!\\(@\[0-9- \]*\\)\\<\\(".a:dates2search."\\)\\>".a:addonPattern."\\(.\*DONE\\)\\@!"
+  let searchString = "\\c\\(\* \\[X\\].\*\\)\\@<!\\(@\[0-9- \]*\\)\\<\\(".a:dates2search."\\):*\\>".a:addonPattern."\\(.\*DONE\\)\\@!"
 
+  " if has("unix")
+  "  let searchString = "\\c\\(\* \\[X\\].\*\\)\\@<!\\(@\[0-9- \]*\\)\\<\\(".a:dates2search."\\):*\\>".a:addonPattern."\\(.\*DONE\\)\\@!"
   " elseif (has("win64") || has("win32") || has("win16"))
   "    let searchString = "\\c\\(\* \\[X\\].\*\\)\\@<!\\(@\[0-9- \]*\\)\\<\\(".a:dates2search."\\)\\>".a:addonPattern."\\(.\*DONE\\)\\@!"
   " endif                         
@@ -47,6 +48,8 @@ dateSequence = getNextDays(
 
 vim.command("let dateSequence = join(" + str(dateSequence) + ", '\|')")  # or \\|
 
+print(dateSequence)
+
 EOF
 
  
@@ -65,21 +68,22 @@ endfunction
 
 " {{{ PyShowPast
 function! PyShowPast()
+ 
+let l:dueDatePattern = ""
 
-if g:vwt#variables#dueDatesOnly
-  let l:dueDatePattern = ":"
-else
-  let l:dueDatePattern = ""
-endif        
+" if g:vwt#variables#dueDatesOnly
+"   let l:dueDatePattern = ":"
+" else
+"   let l:dueDatePattern = ""
+" endif        
 
 Py << EOF
 pastDates = getHistory(	
-					   dateFormat=vim.eval("g:vwt#variables#pythonDateFormat"), 
 					   buffer = vim.current.buffer,
+					   dateFormat=vim.eval("g:vwt#variables#pythonDateFormat"), 
 					   vimTaskDate=vim.eval("g:vwt#variables#endDatePattern"),
            			   vimDatePattern=vim.eval("g:vwt#variables#dateFormat")
 					  )
-print(pastDates)
 
 vim.command("let date_seq = join(" + str(pastDates) + ", '\|')")  # or \\|
 # if sys.platform.lower().startswith('win'):
@@ -93,7 +97,6 @@ EOF
 
 " elseif (has("win64") || has("win32") || has("win16")) 
 let l:searchString = s:buildSearchString(date_seq, l:dueDatePattern)
-echo l:searchString
 call s:executeSearch(l:searchString)
 
 endfunction   

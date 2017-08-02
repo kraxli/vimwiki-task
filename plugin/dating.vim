@@ -50,8 +50,6 @@ dateSequence = getNextDays(
 
 vim.command("let dateSequence = join(" + str(dateSequence) + ", '\|')")  # or \\|
 
-print(dateSequence)
-
 EOF
 
  

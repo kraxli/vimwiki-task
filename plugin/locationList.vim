@@ -30,7 +30,7 @@ function! GetTagsWiki(...)
   " let tagsSeparated = s:buildSeparatedList(tagList, ":\\|:", ":", ":")
   let tagsSeparated = s:buildSeparatedList(tagList, "\\>:\\|:\\<", ":\\<", "\\>:")
 
-  let files = expand('<sfile>:p:h')."/*.wiki"
+  let files = expand('<sfile>:p:h').g:vwt#variables#os_path_sep."*.wiki"
   call s:ExecuteList(tagsSeparated, files)
 
 endfunction   
@@ -56,7 +56,7 @@ function! GetPatternsWiki(files2search, ...)
     " let files = expand('<sfile>:p:h')."/*.wiki"
     let files = g:vimwiki_list[0]["path"]."*.wiki"
   else
-    let files = expand('<sfile>:p:h')."/*".files2search."*.wiki"
+    let files = expand('<sfile>:p:h').g:vwt#variables#os_path_sep."*".files2search."*.wiki"
   endif
 
   call s:ExecuteList(tagsSeparated, files)
@@ -105,7 +105,7 @@ function! BrowseWikiDirectory(...)
   " let tagsSeparated = s:buildSeparatedList(tagList, ":\\|:", ":", ":")
   let tagsSeparated = s:buildSeparatedList(tagList, "\\>:\\|:\\<", ":\\<", "\\>:")
 
-  let files = expand('<sfile>:p:h')."/*.wiki"
+  let files = expand('<sfile>:p:h').g:vwt#variables#os_path_sep."*.wiki"
   call s:ExecuteList(tagsSeparated, files)
 
 endfunction   

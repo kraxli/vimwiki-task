@@ -91,26 +91,6 @@ pattern0 = "\*\s\[(?!\s+)\]"
 pattern1 = "\*\s\[\s+\]"
 
 while check == 1:
-   nL = nL + 1
-   indent = vim.eval("(indent(" + str(lnum - nL) + ") / " + sw + ")")
-   if indent < indent_level:
-
-      line = vim.eval("getline(" + str(lnum - nL) +")")
-
-      if re.search(pattern0, line) is not None:
-         check = 0
-         vim.command("return 1")
-
-      elif re.search(pattern1, line) is not None: 
-         vim.command("return 2")
-         # vim.command("return 0")
-
-      else:
-         vim.command("return 3")
-         # vim.command("return 0")
-
-   if nL > 20:
-      break 
  
 EOF
 endfunction 
@@ -147,7 +127,7 @@ hi link Todo hiTodo
 
 " You can set up different colors for each header level: >
 hi VimwikiHeader1 guifg=Red gui=underline,bold ctermfg=Red cterm=underline,bold
-hi VimwikiHeader2 guifg=Red gui=underline,bold ctermfg=Red cterm=underline
+hi VimwikiHeader2 guifg=Orange gui=underline ctermfg=Orange cterm=underline
 hi VimwikiHeader3 guifg=Red ctermfg=Red
 hi VimwikiHeader4 guifg=LightRed gui=underline,bold ctermfg=LightRed cterm=underline,bold
 hi VimwikiHeader5 guifg=LightRed gui=underline ctermfg=LightRed cterm=underline

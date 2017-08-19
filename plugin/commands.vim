@@ -48,5 +48,5 @@ command! -nargs=*  Idr call InsertDueRange(<f-args>)
 
 " }}}  
 
-" vim:foldmethod=marker:foldlevel=0
+" vim: foldmethod=marker foldlevel=0:
  

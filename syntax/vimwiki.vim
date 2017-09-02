@@ -127,7 +127,7 @@ hi link Todo hiTodo
 
 " You can set up different colors for each header level: >
 hi VimwikiHeader1 guifg=Red gui=underline,bold ctermfg=Red cterm=underline,bold
-hi VimwikiHeader2 guifg=Orange gui=underline ctermfg=Orange cterm=underline
+hi VimwikiHeader2 guifg=#ff9800  ctermfg=208
 hi VimwikiHeader3 guifg=Red ctermfg=Red
 hi VimwikiHeader4 guifg=LightRed gui=underline,bold ctermfg=LightRed cterm=underline,bold
 hi VimwikiHeader5 guifg=LightRed gui=underline ctermfg=LightRed cterm=underline

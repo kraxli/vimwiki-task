@@ -7,7 +7,7 @@ nnoremap <leader>dr "='@'.strftime("%Y-%m-%d").' - '.strftime("%Y-%m-%d").':'<CR
 
 
 " see my mail for more time maping: https://mail.google.com/mail/u/0/#inbox/1513384ef6a2d516
-noremap <leader>td $"=strftime(" [@DONE: %Y-%m-%d]")<CR>p :VimwikiToggleListItem<cr>
+noremap <leader>td $"=strftime(" [@DONE: %Y-%m-%d]")<CR>P :VimwikiToggleListItem<cr>
 " noremap <leader>td $ "=strftime(" <@DONE: %Y-%m-%d>")<CR>P :VimwikiToggleListItem<cr>
 nmap <leader>do <leader>td
 

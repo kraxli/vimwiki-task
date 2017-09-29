@@ -1,2 +1,2 @@
 
-au BufNewFile,BufRead,BufReadPost *.wiki set filetype=vimwiki
+au BufNewFile,BufRead,BufReadPost *.wiki,*.pdc set filetype=vimwiki

@@ -1,6 +1,7 @@
 " =======================================================
 "
 " =======================================================
+" Note the easiest to use is \V (capital):	the following chars in the pattern are "very nomagic" (only \ is magic)
 
 let vwtProjectPrefix = '+'
 let vwtTagPattern = '/:[A-Za-z0-9]+:/'

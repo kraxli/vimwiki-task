@@ -10,10 +10,72 @@
 " ==# : equal (case sensitive)
 
 let g:vimwiki_rxHeader = '#'
-let g:vimwiki_rxListItem = ['*', '-', '+']
+" let g:vimwiki_rxH = '#'
+" '^\s*\('.g:vimwiki_rxH.'\{1,6}\)' " \zs[^'.g:vimwiki_rxH.'].*\ze$'
+let g:vimwiki_rxListItem = '^\s*[*-]\s'
+" let g:vimwiki_rxListBullet = '^\s*[*-]\s'
 " g:vimwiki_syntax_variables['markdown'].rxH
 " g:vimwiki_list[1].syntax
 " g:vimwiki_wikilocal_vars[0].syntax
+
+"syntax/vimwiki_markdown.vim
+let g:vimwiki_rxPreStart = '```'
+let g:vimwiki_rxPreEnd = '```'
+
+
+
+function! s:get_base_level(lnum) "{{{
+  let lnum = a:lnum - 1
+  while lnum > 0
+    if getline(lnum) =~ g:vimwiki_rxHeader
+      return vimwiki#u#count_first_sym(getline(lnum))
+    endif
+    let lnum -= 1
+  endwhile
+  return 0
+endfunction "}}}
+
+function! s:find_forward(rx_item, lnum) "{{{
+  let lnum = a:lnum + 1
+
+  while lnum <= line('$')
+    let line = getline(lnum)
+    if line =~ a:rx_item
+          \ || line =~ '^\S'
+          \ || line =~ g:vimwiki_rxHeader
+      break
+    endif
+    let lnum += 1
+  endwhile
+
+  return [lnum, getline(lnum)]
+endfunction "}}}
+
+function! s:get_li_level(lnum) "{{{
+"  if VimwikiGet('syntax') == 'media'
+"    let level = vimwiki#u#count_first_sym(getline(a:lnum))
+"  else
+    let level = (indent(a:lnum) / &sw)
+"  endif
+  return level
+endfunction "}}}
+
+
+function! s:find_backward(rx_item, lnum) "{{{
+  let lnum = a:lnum - 1
+
+  while lnum > 1
+    let line = getline(lnum)
+    if line =~ a:rx_item
+          \ || line =~ '^\S'
+      break
+    endif
+    let lnum -= 1
+  endwhile
+
+  return [lnum, getline(lnum)]
+endfunction "}}}
+
 
 
 function! IndentLevel(lnum) " {{{
@@ -136,7 +198,6 @@ function! VimwikiFoldLevelAll(lnum) "{{{
 
   " Header/section folding...
   if line =~ g:vimwiki_rxHeader
-    let numsym = vimwiki#u#count_first_sym(line)
     return '>'.numsym " start fold with level x
 
     " Code block folding...

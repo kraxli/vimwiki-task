@@ -198,6 +198,7 @@ function! VimwikiFoldLevelAll(lnum) "{{{
 
   " Header/section folding...
   if line =~ g:vimwiki_rxHeader
+    let numsym = vimwiki#u#count_first_sym(line)
     return '>'.numsym " start fold with level x
 
     " Code block folding...

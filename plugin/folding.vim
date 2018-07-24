@@ -70,7 +70,4 @@ command! ShowToday call PyShowNextDays(0)|normal n
 " }}}
 
 
-
 " vim:foldmethod=marker:foldlevel=0
-
-

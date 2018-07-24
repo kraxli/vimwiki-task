@@ -8,6 +8,7 @@
 " =~ : match with
 " =~? : matchs with (non-case sensitive)
 " ==# : equal (case sensitive)
+" see :h fold-expr
 
 let g:vimwiki_rxHeader = '#'
 " let g:vimwiki_rxH = '#'
@@ -21,7 +22,6 @@ let g:vimwiki_rxListItem = '^\s*[*-]\s'
 "syntax/vimwiki_markdown.vim
 let g:vimwiki_rxPreStart = '```'
 let g:vimwiki_rxPreEnd = '```'
-
 
 
 function! s:get_base_level(lnum) "{{{
@@ -250,6 +250,47 @@ function! VimwikiFoldLevelAll(lnum) "{{{
 
 endfunction "}}}
 
+" see :h fold-expr
+function! VimwikiFoldLevelAllIndent(lnum) "{{{
+  " stop if file has one line only
+  if line('$') <= 1
+    return -1
+  endif
+
+  let line = getline(a:lnum)
+  let [n_prev_header, l_prev_header] = s:find_pattern_backw(g:vimwiki_rxHeader, a:lnum) "
+  let cur_ind = indent(a:lnum) / &sw
+  let level = s:get_li_level(a:lnum) " cur_ind
+
+
+  if  l_prev_header !~ "^\s*$" "or \v\s
+    let p_head_fold =  vimwiki#u#count_first_sym(l_prev_header)
+  else
+    let p_head_fold = 0
+  endif
+
+  " Header/section folding...
+  if line =~ g:vimwiki_rxHeader
+    let numsym = vimwiki#u#count_first_sym(line)
+    return '>'.numsym " start fold with level x
+
+    " Code block folding...
+  elseif line =~ '^\s*'.g:vimwiki_rxPreStart
+    return 'a1'
+  elseif line =~ '^\s*'.g:vimwiki_rxPreEnd.'\s*$'
+    return 's1'
+
+  " assign blank lines to a fold (previous or next??) (matches an empty line)
+  elseif line =~ '^ *$' || line =~ "^\s*$" || line =~ "^$"
+    return "="
+
+    " everything else (including lists) is folded by indent
+  else
+    return  '>'.(p_head_fold + cur_ind + 1) 
+
+  endif
+
+endfunction "}}}
 
 " s:TaskSearch {{{1
 " daterange should be a list - [start, end] where start, end are numbers

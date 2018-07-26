@@ -251,7 +251,7 @@ function! VimwikiFoldLevelAll(lnum) "{{{
 endfunction "}}}
 
 " see :h fold-expr
-function! VimwikiFoldLevelAllIndent(lnum) "{{{
+function! VimwikiFoldHeaderIndent(lnum) "{{{
   " stop if file has one line only
   if line('$') <= 1
     return -1
@@ -282,11 +282,17 @@ function! VimwikiFoldLevelAllIndent(lnum) "{{{
 
   " assign blank lines to a fold (previous or next??) (matches an empty line)
   elseif line =~ '^ *$' || line =~ "^\s*$" || line =~ "^$"
-    return "="
+    " see :h fold-expr
+    " return "="  " same foldlevel as line before
+    " return "a1"   " add one fold to the previous
+
+    " better to add one fold to last non-empty line
+    return  '>'.(p_head_fold + 1)
+
 
     " everything else (including lists) is folded by indent
   else
-    return  '>'.(p_head_fold + cur_ind + 1) 
+    return  '>'.(p_head_fold + cur_ind + 1)
 
   endif
 

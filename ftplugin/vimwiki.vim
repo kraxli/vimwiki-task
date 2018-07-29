@@ -279,7 +279,8 @@ function! VimwikiFoldHeaderIndent(lnum) "{{{
   endif
 
   " Header/section folding...
-  if line =~ '^\s*'.g:vimwiki_rxHeader.'\+\s\+'
+  " if line =~ '^\s*'.g:vimwiki_rxHeader.'\+\s\+'
+  if line =~ '^'.g:vimwiki_rxHeader.'\+\s\+'
     let numsym = vimwiki#u#count_first_sym(line)
     return '>'.numsym " start fold with level x
 

@@ -28,7 +28,7 @@ function! s:get_base_level(lnum) "{{{
   let lnum = a:lnum - 1
   while lnum > 0
     " if getline(lnum) =~ g:vimwiki_rxHeader
-    if getline(lnum) =~ '^\s*'.g:vimwiki_rxHeader.'\+\s\+'
+    if getline(lnum) =~ '^'.g:vimwiki_rxHeader.'\+\s*'
       return vimwiki#u#count_first_sym(getline(lnum))
     endif
     let lnum -= 1
@@ -43,7 +43,7 @@ function! s:find_forward(rx_item, lnum) "{{{
     let line = getline(lnum)
     if line =~ a:rx_item
           \ || line =~ '^\S'
-          \ ||line =~ '^\s*'.g:vimwiki_rxHeader.'\+\s\+'
+          \ ||line =~ '^'.g:vimwiki_rxHeader.'\+\s*'
           " \ || line =~ g:vimwiki_rxHeader
       break
     endif
@@ -175,7 +175,7 @@ function! VimwikiFoldLevelAll(lnum) "{{{
 
   let line = getline(a:lnum)
   let [pnum, pline] = s:find_backward(g:vimwiki_rxListItem, a:lnum)
-  let [n_prev_header, l_prev_header] = s:find_pattern_backw('^\s*'.g:vimwiki_rxHeader.'\+\s\+', a:lnum) "
+  let [n_prev_header, l_prev_header] = s:find_pattern_backw('^'.g:vimwiki_rxHeader.'\+\s*', a:lnum) "
   " let [n_prev_header, l_prev_header] = s:find_pattern_backw(g:vimwiki_rxHeader, a:lnum) "
   let [nnum, nline] = s:find_forward(g:vimwiki_rxListItem, a:lnum)
   let n_prev_blank = s:find_list_bw(["^ *$"], prevnonblank(a:lnum) + 1)
@@ -192,8 +192,8 @@ function! VimwikiFoldLevelAll(lnum) "{{{
 
   " let l_head_list_pat = [g:vimwiki_rxHeader, g:vimwiki_rxListItem]
   " let l_head_list_empty_pat = [g:vimwiki_rxHeader, g:vimwiki_rxListItem, "^ *$", "^\s*$"]
-  let l_head_list_pat = ['^\s*'.g:vimwiki_rxHeader.'\+\s\+', g:vimwiki_rxListItem]
-  let l_head_list_empty_pat = ['^\s*'.g:vimwiki_rxHeader.'\+\s\+', g:vimwiki_rxListItem, "^ *$", "^\s*$"]
+  let l_head_list_pat = ['^'.g:vimwiki_rxHeader.'\+\s*', g:vimwiki_rxListItem]
+  let l_head_list_empty_pat = ['^'.g:vimwiki_rxHeader.'\+\s*', g:vimwiki_rxListItem, "^ *$", "^\s*$"]
 
   if  l_prev_header !~ "^\s*$" "or \v\s
     let p_head_fold =  vimwiki#u#count_first_sym(l_prev_header)
@@ -203,7 +203,7 @@ function! VimwikiFoldLevelAll(lnum) "{{{
 
   " Header/section folding...
   " if line =~ g:vimwiki_rxHeader
-  if line =~ '^\s*'.g:vimwiki_rxHeader.'\+\s\+'
+  if line =~ '^'.g:vimwiki_rxHeader.'\+\s*'
     let numsym = vimwiki#u#count_first_sym(line)
     return '>'.numsym " start fold with level x
 
@@ -260,6 +260,9 @@ endfunction "}}}
 
 " see :h fold-expr
 function! VimwikiFoldHeaderIndent(lnum) "{{{
+  " this function requires headers indicators (e.g. #) to be followed by
+  " a space
+
   " stop if file has one line only
   if line('$') <= 1
     return -1
@@ -267,7 +270,7 @@ function! VimwikiFoldHeaderIndent(lnum) "{{{
 
   let line = getline(a:lnum)
   " let [n_prev_header, l_prev_header] = s:find_pattern_backw(g:vimwiki_rxHeader, a:lnum) "
-  let [n_prev_header, l_prev_header] = s:find_pattern_backw('^\s*'.g:vimwiki_rxHeader.'\+\s\+', a:lnum) "
+  let [n_prev_header, l_prev_header] = s:find_pattern_backw('^'.g:vimwiki_rxHeader.'\+\s\+', a:lnum) "
   let cur_ind = indent(a:lnum) / &sw
   let level = s:get_li_level(a:lnum) " cur_ind
 

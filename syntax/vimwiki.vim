@@ -79,61 +79,63 @@ hi link vimwikiTaskMilestone pandocDefinitionTerm
 "  syn match VimwikiHeader4Date /\v\d{4}-\d\d-\d\d( \d\d:\d\d)?/ contained containedin=VimwikiHeader4
 " =======================================================
 function! Check4TaskedStatus()
-Py << EOF
-import vim, re
-lnum = int(vim.eval("line('.')"))
-sw = vim.eval("&sw")
-indent_level = vim.eval("(indent(" + str(lnum) + ") / " + sw + ")")
+  Py << EOF
+  import vim, re
+  lnum = int(vim.eval("line('.')"))
+  sw = vim.eval("&sw")
+  indent_level = vim.eval("(indent(" + str(lnum) + ") / " + sw + ")")
 
-check = 1
-nL = 0
+  check = 1
+  nL = 0
 
-pattern0 = "\*\s\[(?!\s+)\]"
-pattern1 = "\*\s\[\s+\]"
+  pattern0 = "\*\s\[(?!\s+)\]"
+  pattern1 = "\*\s\[\s+\]"
 
-while check == 1:
- 
-EOF
-endfunction 
-"
-execute 'syntax match vimwikiToday /' .strftime("%Y-%m-%d"). '/'
-execute 'syntax match vimwikiToday /\[DD: *' .strftime("%Y-%m-%d"). '\]/'
-execute 'syntax match vimwikiToday /@'.strftime("%Y-%m-%d").'/'
-execute 'syntax match vimwikiToday / \='.strftime("%Y-%m-%d").':/'
-execute 'syntax match vimwikiToday /\s\='.strftime("%Y-%m-%d").':/'
-execute 'syntax match vimwikiToday /\v\@'.strftime("%Y-%m-%d").'\s=[-]\s=\d{4}-\d\d-\d\d\s=\:/'
-execute 'syntax match vimwikiToday /\v\@\d{4}-\d\d-\d\d\s=[-]\s='.strftime("%Y-%m-%d").'\s=\:/'
-" execute 'syntax match vimwikiToday /\v-\s*'.strftime("%Y-%m-%d").'\:/'
-hi link vimwikiToday hiToday 
-" CursorLineNr WarningMsg Special Keyword Constant
-" highlight vimwikiToday guibg=yellow guifg=black gui=bold
-"
-syn match VimwikiDone /\v\<\@DONE.*\d{4}-\d\d-\d\d\>/
-" \\@\d{4}-\d\d-\d\d\
-hi link VimwikiDone Type
-"Type VimwikiHeader4
+  while check == 1:
+
+    EOF
+  endfunction 
+  "
+  execute 'syntax match vimwikiToday /' .strftime("%Y-%m-%d"). '/'
+  execute 'syntax match vimwikiToday /\[DD: *' .strftime("%Y-%m-%d"). '\]/'
+  execute 'syntax match vimwikiToday /@'.strftime("%Y-%m-%d").'/'
+  execute 'syntax match vimwikiToday / \='.strftime("%Y-%m-%d").':/'
+  execute 'syntax match vimwikiToday /\s\='.strftime("%Y-%m-%d").':/'
+  execute 'syntax match vimwikiToday /\v\@'.strftime("%Y-%m-%d").'\s=[-]\s=\d{4}-\d\d-\d\d\s=\:/'
+  execute 'syntax match vimwikiToday /\v\@\d{4}-\d\d-\d\d\s=[-]\s='.strftime("%Y-%m-%d").'\s=\:/'
+  " execute 'syntax match vimwikiToday /\v-\s*'.strftime("%Y-%m-%d").'\:/'
+  hi link vimwikiToday hiToday 
+  " CursorLineNr WarningMsg Special Keyword Constant
+  " highlight vimwikiToday guibg=yellow guifg=black gui=bold
+  "
+  syn match VimwikiDone /\v\<\@DONE.*\d{4}-\d\d-\d\d\>/
+  " \\@\d{4}-\d\d-\d\d\
+  hi link VimwikiDone Type
+  "Type VimwikiHeader4
 
 
-" execute 'syntax match vimwikiTodos /\v[A-Z]{2,33}:/'
-execute 'syntax match vimwikiTodos /\(todo\|To Do\|to do\|TODO\|TO DO\|ToDo\):*/'
+  " execute 'syntax match vimwikiTodos /\v[A-Z]{2,33}:/'
+  execute 'syntax match vimwikiTodos /\(todo\|To Do\|to do\|TODO\|TO DO\|ToDo\):*/'
 
-" == link color to pattern ==
-hi link vimwikiTodos Todo
-hi link Todo hiTodo
+  " == link color to pattern ==
+  hi link vimwikiTodos Todo
+  hi link Todo hiTodo
 
- 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" section highlighting
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" You can set up different colors for each header level: >
-hi VimwikiHeader1 guifg=Red gui=underline,bold ctermfg=Red cterm=underline,bold
-hi VimwikiHeader2 guifg=#ff9800  ctermfg=208
-hi VimwikiHeader3 guifg=Red ctermfg=Red
-hi VimwikiHeader4 guifg=LightRed gui=underline,bold ctermfg=LightRed cterm=underline,bold
-hi VimwikiHeader5 guifg=LightRed gui=underline ctermfg=LightRed cterm=underline
-hi VimwikiHeader6 guifg=LightRed ctermfg=LightRed
-" hi VimwikiHeader1 guifg=#FF0000 ctermfg=LightRed cterm=underline,bold
-" hi VimwikiHeader2 guifg=DarkCyan  " #00FF00 DarkCyan  #427b58 GruvboxBlueSign GruvboxBlue
+  """""""""""""""""""""""""""""""""""""""""""""""""""""""
+  " section highlighting
+  """""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+  " You can set up different colors for each header level: >
+  if g:vwt#variables#vimwikiTaskHeaderColors
+    hi VimwikiHeader1 guifg=Red gui=underline,bold ctermfg=Red cterm=underline,bold
+    hi VimwikiHeader2 guifg=#ff9800  ctermfg=208
+    hi VimwikiHeader3 guifg=Red ctermfg=Red
+    hi VimwikiHeader4 guifg=LightRed gui=underline,bold ctermfg=LightRed cterm=underline,bold
+    hi VimwikiHeader5 guifg=LightRed gui=underline ctermfg=LightRed cterm=underline
+    hi VimwikiHeader6 guifg=LightRed ctermfg=LightRed
+  endif
+  " hi VimwikiHeader1 guifg=#FF0000 ctermfg=LightRed cterm=underline,bold
+  " hi VimwikiHeader2 guifg=DarkCyan  " #00FF00 DarkCyan  #427b58 GruvboxBlueSign GruvboxBlue
 
 

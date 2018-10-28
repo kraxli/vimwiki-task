@@ -1,8 +1,10 @@
+if !exists("g:vwt#variables#vimwikiTaskHeaderColors")
+   let g:vwt#variables#vimwikiTaskHeaderColors = 0
+endif
+
 if !exists("g:vwt#variables#os_path_sep")
     let  g:vwt#variables#os_path_sep = ((has('win16') || has('win32') || has('win64'))?'\':'/')
 endif
-
-
 
 if !exists("g:vwt#variables#dateFormat")
     let  g:vwt#variables#dateFormat =  "\\d{4}-\\d{2}-\\d{2}"
@@ -19,7 +21,6 @@ endif
 if !exists("g:vwt#variables#dateRangeSeperator")
    let g:vwt#variables#dateRangeSeperator = "-"
 endif
-
 
 if !exists("g:vwt#variables#tagPattern")
     " let  g:vwt#variables#tagPattern =  "\\m:[a-zA-Z0-9]\\+:" " \#[A-Z]{1,99}
